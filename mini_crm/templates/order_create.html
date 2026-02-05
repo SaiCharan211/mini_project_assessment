@@ -1,0 +1,29 @@
+<select id="contact"></select>
+<button onclick="addItem()">Add Item</button>
+<div id="items"></div>
+<button onclick="submitOrder()">Submit</button>
+
+<script>
+let cart = [];
+
+function addItem() {
+  cart.push({
+    product: 1,
+    size_name: "M",
+    qty: 1,
+    extras: [],
+    customization: ""
+  });
+}
+
+function submitOrder() {
+  fetch("/api/orders/", {
+    method:"POST",
+    headers:{"Content-Type":"application/json"},
+    body:JSON.stringify({
+      contact: 1,
+      items: cart
+    })
+  }).then(r=>r.json()).then(console.log);
+}
+</script>

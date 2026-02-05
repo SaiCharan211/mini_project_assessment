@@ -1,0 +1,14 @@
+<input id="u"><input id="p" type="password">
+<button onclick="login()">Login</button>
+<script>
+function login() {
+  fetch("/api/auth/login/", {
+    method:"POST",
+    headers:{ "Content-Type":"application/json"},
+    body:JSON.stringify({
+      username:u.value,
+      password:p.value
+    })
+  }).then(r=>r.json()).then(console.log)
+}
+</script>
